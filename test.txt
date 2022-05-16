@@ -1,0 +1,108 @@
+VR Project Oral
+4/8/2022
+A7-1-1 Précision
+100
+2000
+Fluid.
+English Group Placement Oral
+3/28/2022
+A7-1 Speaking
+95
+5700
+Excellent grammar and vocabulary. Speech flows nicely, able to carry the conversation and use filler words.
+VR Project Oral
+4/8/2022
+A7-1-2 Vocabulaire	
+95
+1900
+VR Reading List Multiple Choice Questions
+2/21/2022
+A8-1-2-1 Reading List
+90
+270
+VR Project Oral
+4/8/2022
+A8-1-1 Confiance
+90
+1287
+Internet Search Deliverables
+3/17/2022
+A8-3-3 Curiosité
+89
+1272
+1/ Real research from context to specific subjects with a good approach: info is not only accurate in general but can answer a specific need. I like the comments you made on each resource and particularly the ‘must have’ category. I would have liked to see more of your methodology, but all in all, the purpose is understood and met. 2/ The research project is fully realized. Great organization, in the process, in the data. Resources are identified, verified, according to needs and to their value. The result is an excellent basis if you wanted to go through the scenario, I couldn’t find a corner of the subject you neglected. You could use your research as a great tool and project management basis. OVERALL/involved, curious, with a solid method and understanding of the subject from the beginning but still added skills and efficiency.
+AI Reading List Multiple Choices
+5/3/2022
+A8-1-2-1 Reading List
+87
+261
+Moonshot Project Pitch
+4/1/2022
+A1-1-C2 Valider
+85
+1062
+VR Project Oral
+4/8/2022
+A8-2-1 Oral
+85
+1215
+C# Exam
+12/3/2021
+A3-2-C2-2 Imperative
+80
+900
+Moonshot Project Pitch
+4/1/2022
+A1-1-C1 Besoins
+80
+1800
+Very clear. In English: nervous, made a few mistakes and hesitated.
+Moonshot Project Pitch
+4/1/2022
+A7-1-1 Précision
+77
+1540
+Problem Solving Exam
+3/3/2022
+A8-3 Résolution de problèmes
+75
+1072
+F# Exam
+3/18/2022
+A3-2-C2-1 Functional
+75
+843
+Mostly good style, the use of parentheses with the if expression was a bit strange.
+Moonshot Project Pitch
+4/1/2022
+A8-1-1 Confiance
+73
+1043
+Moonshot Project Pitch
+4/1/2022
+A8-2-1 Oral
+68
+972
+Sound Synthesis Project
+1/3/2022
+A1-3-C2 Dossier
+64
+1440
+Good points: - Excellent read me clearly documenting what has been implemented and how to use it. - All functions documented using document comments. Improvements: - Technical and functional specifications could have been more developed.
+Sound Synthesis Project
+1/3/2022
+A3-1-C1 Rédiger
+53
+530
+Good points: - Unit tests covering most functions Improvements: - Unit tests inputs could have been more varied, including more tests cases for invalid input - Would have been nice to seem more developed examples of using the library
+Sound Synthesis Project
+1/3/2022
+A3-2-C2 Mise en oeuvre
+39
+1755
+Source: Good points: - Clear, neat and well structured Improvements: - Non-idiomatic choices such as using List.map |> ignore instead of List.iter - Some commented code and TODOs in main branch Scope: Good points: - Scope everything outside of the MP3 developed correctly - Some interesting extensions, such as handling stereo Improvements -Looks like a good start to decoding an MP3, but no tests for this code, so can’t see if it would work Devops: Good points: - Generation and deployment of nuget package Improvements: - No automated build - No approvals requirement for pull requests - Few discussions or descriptions on pull requests
+F# Reading List Multiple Choice Questions
+1/3/2022
+A8-1-2-1 Reading List
+12
+36

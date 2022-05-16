@@ -1,0 +1,58 @@
+table{
+    width: 100%;
+    border-spacing: 0px;
+}
+
+td{
+    width: 25%;
+    text-align: left;
+    padding: 5px;
+}
+
+.green{
+    border: 3px solid green;
+}
+.green .left{
+    background-color: green;
+    color: White;
+    font-weight: bolder;
+}
+.green .right{
+    background-color: lightgreen;
+    color: darkgreen;
+    font-weight: bolder;
+}
+
+.orange{
+    border: 3px solid orange;
+}
+.orange .left{
+    background-color: orange;
+    color: White;
+    font-weight: bolder;
+}
+.orange .right{
+    background-color: lightyellow;
+    color: darkorange;
+    font-weight: bolder;
+}
+
+.red{
+    border: 3px solid red;
+}
+.red .left{
+    background-color: red;
+    color: White;
+    font-weight: bolder;
+}
+.red .right{
+    background-color: lightcoral;
+    color: darkred;
+    font-weight: bolder;
+}
+
+
+th{
+    text-align: left;
+    width: 25%;
+}
