@@ -7,10 +7,10 @@ driver.get("https://skills.algosup.com/evaluations")
 element = driver.find_element(by=By.XPATH, value='//*[@id="username"]')
 element.send_keys("louisdechoulot@gmail.com") #EMAIL
 element = driver.find_element(by=By.XPATH, value='//*[@id="password"]')
-element.send_keys("polo27072002") #PASSWORD
+element.send_keys("") #PASSWORD
 button = driver.find_element(by=By.XPATH, value='//*[@id="app__container"]/main/div[3]/form/div[3]/button')
 button.click()
-time.sleep(3)
+time.sleep(3) #change to 5 when using adsl
 f = driver.find_elements(by=By.CLASS_NAME, value='rz-cell-data')
 alltxt = ""
 for t in f:
