@@ -5,19 +5,17 @@ function update(boo) {
         chrome.storage.sync.get("notes", ({
             notes
         }) => {
-            console.log(notes);
             localStorage.setItem('note', notes);
         });
         let json = localStorage.getItem("note");
         localStorage.removeItem("note");
-        let notes;
-        try {
-            notes = JSON.parse(json);
-        } catch (error) {
+        if (json == "undefined"){
             tryGet();
             document.getElementById("outputBody").innerHTML += "loading../"
             return;
         }
+        let notes;
+            notes = JSON.parse(json);
         tree = []
 
         perfectScore = 95;
@@ -117,7 +115,6 @@ chrome.tabs.query({
     active: true,
     lastFocusedWindow: true
 }, tabs => {
-    console.log(locallyStored);
     localStorage.setItem('url', tabs[0].url);
     if (checkURL()) {
     } else if (locallyStored === null) {
@@ -190,7 +187,6 @@ async function tryGet() {
     if (!checkURL()) {
         setTimeout(() => {
             update(true);
-        }, 200);
-        
+        }, 1200);
     }
 }
