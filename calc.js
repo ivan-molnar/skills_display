@@ -1,10 +1,11 @@
+setTimeout(function () {
 chrome.storage.sync.get("notes", ({
     notes
 }) => {
     localStorage.setItem('note', notes);
 });
 let json = localStorage.getItem("note");
-
+console.log(localStorage.getItem("note"));
 let notes = JSON.parse(json);
 tree = []
 
@@ -88,3 +89,4 @@ for (i in tree) {
 
     console.log(tree[i].Activity[0]);
 }
+}, 900);
