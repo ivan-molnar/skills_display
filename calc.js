@@ -81,7 +81,7 @@ function update(boo) {
 
         tree = tree.sort(compare);
 
-        document.getElementById("outputBody").innerHTML += "<table><tr> <th>Activity</th> <th>Highest</th> <th>Average</th> <th>Total</th> </tr></table>"
+        document.getElementById("outputBody").innerHTML += "<table><tr> <th class='left'>Activity</th> <th class='right'>Highest</th> <th class='right'>Average</th> <th class='right'>Total</th> </tr></table>"
 
        lastRoot = tree[0].Activity[0][0]
 
