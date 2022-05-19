@@ -5,7 +5,6 @@ chrome.storage.sync.get("notes", ({
     localStorage.setItem('note', notes);
 });
 let json = localStorage.getItem("note");
-console.log(localStorage.getItem("note"));
 let notes = JSON.parse(json);
 tree = []
 
@@ -48,7 +47,6 @@ for (i in notes) {
         if (equals(tree[j].Activity[0], note.Activity[0])) {
             tree[j].Highest = Math.max(tree[j].Highest, note.Highest);
             tree[j].Allnotes = tree[j].Allnotes.concat(note.Allnotes);
-            console.log(tree[j].Percentage);
             tree[j].Average = tree[j].Allnotes.reduce((a, b) => a + b, 0) / tree[j].Allnotes.length;
             flag = false;
             break;
@@ -86,7 +84,11 @@ for (i in tree) {
     html += "</tr></table>";
 
     document.body.innerHTML += html;
-
-    console.log(tree[i].Activity[0]);
 }
 }, 900);
+
+const channel = new BroadcastChannel("my-channel");
+console.log("connected");
+channel.addEventListener("message", e => {
+    console.log(e.data);
+});

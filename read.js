@@ -1,10 +1,8 @@
 setTimeout(function () {
 let arr = "";
-while (arr == "") {
     Array.prototype.slice.call(document.getElementsByClassName("rz-cell-data")).forEach(element => {
         arr += element.innerHTML;
     });
-}
 raw = arr.split('                <!--!-->\n');
 counter = 0;
 output = [];
