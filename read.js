@@ -1,5 +1,7 @@
+//data scraping on the web page
 function get() {
     let arr = "";
+    // get all elements in the form of a string
     Array.prototype.slice.call(document.getElementsByClassName("rz-cell-data")).forEach(element => {
         arr += element.innerHTML;
     });
@@ -32,18 +34,17 @@ function get() {
                 }
         }
     }
-    let notes = JSON.stringify(output); //if popup version
+    //saving data in chrome storage to communicate them to calc.js
+    let notes = JSON.stringify(output); 
     chrome.storage.sync.set({
         "notes": notes
     });
 }
 setTimeout(() => {
     get();
-}, 1000);
+}, 1000); // time to be sure that the content is loaded, blazor makes items appear even after the page is fully loaded
 
-
+//if you quit/refresh the website, emptying chrome's storage so that calc does not take old data
 window.addEventListener('beforeunload', async () => {
     chrome.storage.sync.remove("notes");
-    localStorage.removeItem("written");
-    localStorage.removeItem("note");
 })

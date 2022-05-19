@@ -1,15 +1,17 @@
-let locallyStored = localStorage.getItem("written");
-let counter = 0;
+let locallyStored = localStorage.getItem("written"); // to verify if notes exist
+let counter = 0;// to count number of loading iteration before interrupt
+
+//function that updates and writes content
 function update(boo) {
     if (locallyStored === null && boo) {
+        let json
+        //getting json from chrome storage
         chrome.storage.sync.get("notes", ({
             notes
         }) => {
-            localStorage.setItem('note', notes);
+            json = notes;
         });
-        console.log(counter);
-        let json = localStorage.getItem("note");
-        localStorage.removeItem("note");
+        // verifying if chrome storage is not empty, if empty either page loaded without the extension installed or just not set because of tab change and so resetting it.
         if (json == "undefined" && counter <= 5){
             tryGet();
             document.getElementById("outputBody").innerHTML += "loading../"
@@ -19,7 +21,8 @@ function update(boo) {
             document.getElementById("outputBody").innerHTML = "The page needs to be reloaded. <br> tip : the page needs to be loaded with the extension installed"
             counter=0;
         }
-        console.log(counter);
+
+        //data preparation
         let notes;
             notes = JSON.parse(json);
         tree = []
@@ -81,23 +84,20 @@ function update(boo) {
 
         tree = tree.sort(compare);
 
+        //pushing data on webpage
         document.getElementById("outputBody").innerHTML += "<table><tr> <th class='left'>Activity</th> <th class='right'>Highest</th> <th class='right'>Average</th> <th class='right'>Total</th> </tr></table>"
 
-       lastRoot = tree[0].Activity[0][0]
-
+        lastRoot = tree[0].Activity[0][0]
         for (i in tree) {
             html = "";
-
             branch = tree[i];
             if(lastRoot != branch.Activity[0][0]){
                 html += "<div style='height:3px;'></div>";
                 lastRoot = branch.Activity[0][0];
             }
-
             // -- to show off depth difference: --
             //branchLen = branch.Activity[0].length;
             //html += "<table style='margin-left:" + (branchLen-1)*20 + "px;' class='";
-
             html += "<table class='";
 
 
@@ -120,6 +120,7 @@ function update(boo) {
 
             document.getElementById("outputBody").innerHTML += html;
         }
+        //saving html so that if popup closed and reopened, no data scraping waiting time
         localStorage.setItem('written', document.getElementById("outputBody").innerHTML);
     } else {
         document.getElementById("outputBody").innerHTML += locallyStored;
@@ -130,7 +131,7 @@ function update(boo) {
 //===================
 
 
-
+//verifying if should run update() and if data scraping has already happened
 chrome.tabs.query({
     active: true,
     lastFocusedWindow: true
@@ -146,6 +147,7 @@ chrome.tabs.query({
     }
 });
 
+//checking if you are on algosup's website and in the evaluations part
 function checkURL(){
     if (localStorage.getItem("url") != "https://skills.algosup.com/evaluations"){
         document.getElementById("outputBody").innerHTML += "website not recognized, please refresh once you are on skills.algosup.com/evaluations"
@@ -156,6 +158,7 @@ function checkURL(){
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+// refresh button handling, shouldn't be useful but people love placebo effet, wake up ! if website is to be reloaded, do so.
 document.getElementById("update").addEventListener("click", async () => {
     chrome.storage.sync.remove("notes");
     localStorage.removeItem("written");
@@ -178,17 +181,20 @@ document.getElementById("update").addEventListener("click", async () => {
     }
 });
 
+// if you want to hard reset data, shouldn't be useful either. Placebo yo yo !
 document.getElementById("clear").addEventListener("click", async () => {
     chrome.storage.sync.remove("notes");
     localStorage.removeItem("written");
     document.getElementById("outputBody").innerHTML = "";
 });
+
 // The body of this function will be executed as a content script inside the
-// current page
+// current page (algosup)
 function update_data() {
     get();
 }
 
+// real auto-update function.
 async function tryGet() {
     chrome.storage.sync.remove("notes");
     localStorage.removeItem("written");
