@@ -13,7 +13,7 @@ This project has been realised by Molnar Ivan and Louis De Lavenne.
 To install the project, you first need to download or clone this repository.
 <u>We had percieved that sometimes, when you clone the repository, the "manifest.json" file does not download with the rest and it might need to be downloaded manually.</u>
 
-Once downloaded, you will have to open a chrome browser and go to ``settings > extentions`` and select ``Developper mode`` in the top-right corner of the window.
+Once downloaded, you will have to open a Chromium (Chrome, Modzilla, Opera, etc..) browser and go to ``settings > extentions`` and select ``Developper mode`` in the top-right corner of the window.
 
 ![developper mode](readme_pics/dev_mode.png)
 
