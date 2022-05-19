@@ -1,5 +1,5 @@
 let locallyStored = localStorage.getItem("written");
-
+let counter = 0;
 function update(boo) {
     if (locallyStored === null && boo) {
         chrome.storage.sync.get("notes", ({
@@ -7,13 +7,19 @@ function update(boo) {
         }) => {
             localStorage.setItem('note', notes);
         });
+        console.log(counter);
         let json = localStorage.getItem("note");
         localStorage.removeItem("note");
-        if (json == "undefined"){
+        if (json == "undefined" && counter <= 5){
             tryGet();
             document.getElementById("outputBody").innerHTML += "loading../"
+            counter++;
             return;
+        }else if ( counter > 5){
+            document.getElementById("outputBody").innerHTML = "The page needs to be reloaded. <br> tip : the page needs to be loaded with the extension installed"
+            counter=0;
         }
+        console.log(counter);
         let notes;
             notes = JSON.parse(json);
         tree = []
