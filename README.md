@@ -6,7 +6,7 @@ This project has been realised by Molnar Ivan and Louis De Lavenne.
 ## Disclaimers
 
 - This project is still in Beta and therefore is still prone to changes during developpement.
-- The exact method in which points move from sub-activites to higher-order activites is yet to be disclosed by the school, therefore these are currently not calculated by the product
+- The exact method in which points move from sub-activites to higher-order activites is yet to be disclosed by the school, therefore these are currently not calculated by the product.
 
 # Installation
 
