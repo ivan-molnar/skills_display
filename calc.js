@@ -9,12 +9,13 @@ function update(boo) {
             localStorage.setItem('note', notes);
         });
         let json = localStorage.getItem("note");
+        localStorage.removeItem("note");
         let notes;
         try {
             notes = JSON.parse(json);
         } catch (error) {
             tryGet();
-            document.getElementById("outputBody").innerHTML += "reloading../"
+            document.getElementById("outputBody").innerHTML += "loading../"
             return;
         }
         tree = []
@@ -118,27 +119,30 @@ chrome.tabs.query({
 }, tabs => {
     console.log(locallyStored);
     localStorage.setItem('url', tabs[0].url);
-    if (localStorage.getItem("url") != "https://skills.algosup.com/evaluations") {
-        document.getElementById("outputBody").innerHTML += "website not recognized, please refresh once you are on skills.algosup.com/evaluations"
+    if (checkURL()) {
     } else if (locallyStored === null) {
         setTimeout(() => {
             update(true);
-            document.getElementById("outputBody").innerHTML = "";
-        }, 1100);
-        setTimeout(() => {
-            update(true);
-        }, 1400);
+        }, 1300);
     } else {
         update(false);
     }
 });
 
+function checkURL(){
+    if (localStorage.getItem("url") != "https://skills.algosup.com/evaluations"){
+        document.getElementById("outputBody").innerHTML += "website not recognized, please refresh once you are on skills.algosup.com/evaluations"
+        return true;
+    }else{
+        return false;
+    }
+}
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 document.getElementById("update").addEventListener("click", async () => {
     chrome.storage.sync.remove("notes");
     localStorage.removeItem("written");
-    localStorage.removeItem("note");
+    document.getElementById("outputBody").innerHTML = "";
     let [tab] = await chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -150,28 +154,28 @@ document.getElementById("update").addEventListener("click", async () => {
         },
         function: update_data,
     });
-    if (localStorage.getItem("url") == "https://skills.algosup.com/evaluations") {
+    if (!checkURL()) {
         setTimeout(() => {
             update(true);
-            document.getElementById("outputBody").innerHTML = "";
         }, 200);
-        setTimeout(() => {
-            update(true);
-        }, 600);
     }
 });
 
+document.getElementById("clear").addEventListener("click", async () => {
+    chrome.storage.sync.remove("notes");
+    localStorage.removeItem("written");
+    document.getElementById("outputBody").innerHTML = "";
+});
 // The body of this function will be executed as a content script inside the
 // current page
 function update_data() {
-    console.log(window);
     get();
 }
 
 async function tryGet() {
     chrome.storage.sync.remove("notes");
     localStorage.removeItem("written");
-    localStorage.removeItem("note");
+    document.getElementById("outputBody").innerHTML = "";
     let [tab] = await chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -183,13 +187,10 @@ async function tryGet() {
         },
         function: update_data,
     });
-    if (localStorage.getItem("url") == "https://skills.algosup.com/evaluations") {
+    if (!checkURL()) {
         setTimeout(() => {
             update(true);
-            document.getElementById("outputBody").innerHTML = "";
         }, 200);
-        setTimeout(() => {
-            update(true);
-        }, 600);
+        
     }
 }
