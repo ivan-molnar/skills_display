@@ -4,9 +4,15 @@ table{
 }
 
 td{
-    width: 25%;
     text-align: left;
     padding: 5px;
+}
+
+.left{
+    width: 40%;
+}
+.right{
+    width: 20%;
 }
 
 .green{
