@@ -36,7 +36,11 @@ function update() {
         note = notes[i];
         note.Percentage = parseInt(note.Percentage)
         note.Activity[0] = note.Activity[0].split("-");
-        note.Max = note.Points / note.Percentage * 100;
+        if(note.Percentage!=0){
+            note.Max = note.Points / note.Percentage * 100;
+        }else{
+            note.Max = 0;
+        }
         note.Average = note.Percentage;
         note.Highest = note.Percentage;
         note.Allnotes = [note.Percentage];
@@ -45,6 +49,7 @@ function update() {
 
         for (j in tree) {
             if (equals(tree[j].Activity[0], note.Activity[0])) {
+                tree[j].Max = Math.max(tree[j].Max, note.Max);
                 tree[j].Highest = Math.max(tree[j].Highest, note.Highest);
                 tree[j].Allnotes = tree[j].Allnotes.concat(note.Allnotes);
                 tree[j].Average = tree[j].Allnotes.reduce((a, b) => a + b, 0) / tree[j].Allnotes.length;
