@@ -30,9 +30,12 @@ It is our objective to simplify this as much as possible. Constructive criticism
 To use the product you just simply have to go to the "Evaluations" tab on your ALGOSUP profile then open the plugin.
 
 ![evaluation tab](readme_pics/eval_tab.png)
+
 ![plugins](readme_pics/plugins.png)
+
 ![skillz plugin](readme_pics/skillz.png)
 
 In the list that appears you will see a list of the activites you have notes from, sorted by activity.
 Red means your note on the activity is below 50%, yellow means you are above 50% and green means your highest note is 95% or above (and therefore not a problem anymore).
+
 ![skillz plugin](readme_pics/table.png)
