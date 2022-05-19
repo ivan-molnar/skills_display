@@ -36,10 +36,12 @@ function get() {
     chrome.storage.sync.set({
         "notes": notes
     });
-    const channel = new BroadcastChannel("my-channel");
-    channel.postMessage(notes);
+    console.log(notes);
 }
-get()
+setTimeout(() => {
+    get();
+}, 1000);
+
 // notes = JSON.parse(notes);
 // tree = []
 

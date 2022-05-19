@@ -7,10 +7,8 @@
     "content_scripts": [{
         "all_frames": true,
         "matches": ["https://skills.algosup.com/evaluations"],
-        "run_at": "document_end",
-        "css": ["style.css"],
         "js": ["read.js"],
-        "html": ["output.html"]
+        "run_at": "document_end"
     }],
     "action": {
         "default_popup": "popup.html"

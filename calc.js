@@ -2,10 +2,17 @@ function update() {
     chrome.storage.sync.get("notes", ({
         notes
     }) => {
+        console.log(notes);
         localStorage.setItem('note', notes);
     });
     let json = localStorage.getItem("note");
-    let notes = JSON.parse(json);
+    let notes;
+    try {
+        notes = JSON.parse(json);
+    } catch (error) {
+        document.getElementById("outputBody").innerHTML += "website not recognized, please refresh once you are on skills.algosup.com/evaluations"
+        return;
+    }
     tree = []
 
     perfectScore = 95;
@@ -65,7 +72,7 @@ function update() {
 
     tree = tree.sort(compare);
 
-    document.body.innerHTML += "<table><tr> <th>Activity</th> <th>Highest</th> <th>Average</th> <th>Total</th> </tr></table>"
+    document.getElementById("outputBody").innerHTML += "<table><tr> <th>Activity</th> <th>Highest</th> <th>Average</th> <th>Total</th> </tr></table>"
 
     for (i in tree) {
         branch = tree[i];
@@ -88,18 +95,17 @@ function update() {
 
         html += "</tr></table>";
 
-        document.body.innerHTML += html;
+        document.getElementById("outputBody").innerHTML += html;
     }
 };
+setTimeout(() => {
+    update();
+}, 1500);
 
-const channel = new BroadcastChannel("my-channel");
-console.log("connected");
-channel.addEventListener("message", e => {
-    console.log(e.data);
-});
-update()
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 document.getElementById("update").addEventListener("click", async () => {
+    chrome.storage.sync.remove("notes");
     let [tab] = await chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -111,11 +117,18 @@ document.getElementById("update").addEventListener("click", async () => {
         },
         function: update_data,
     });
-    update()
+    setTimeout(() => {
+        update();
+        document.getElementById("outputBody").innerHTML = "";
+    }, 200);
+    console.log("updating...");
+    setTimeout(() => {
+        update();
+    }, 600);
 });
 
 // The body of this function will be executed as a content script inside the
 // current page
 function update_data() {
-    get()
+    get();
 }
