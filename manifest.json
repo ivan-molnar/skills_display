@@ -3,7 +3,7 @@
     "description": "Temporary update to Skills.",
     "version": "0.1.0",
     "manifest_version": 3,
-    "permissions": ["storage", "activeTab", "scripting"],
+    "permissions": ["storage", "activeTab", "scripting", "tabs"],
     "content_scripts": [{
         "all_frames": true,
         "matches": ["https://skills.algosup.com/evaluations"],
