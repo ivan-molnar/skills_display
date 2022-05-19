@@ -1,0 +1,18 @@
+{
+    "name": "Skills",
+    "description": "Temporary update to Skills.",
+    "version": "0.1.0",
+    "manifest_version": 3,
+    "permissions": ["storage", "activeTab", "scripting"],
+    "content_scripts": [{
+        "all_frames": true,
+        "matches": ["https://skills.algosup.com/evaluations"],
+        "run_at": "document_end",
+        "css": ["style.css"],
+        "js": ["read.js"],
+        "html": ["output.html"]
+    }],
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
