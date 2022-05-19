@@ -83,9 +83,23 @@ function update(boo) {
 
         document.getElementById("outputBody").innerHTML += "<table><tr> <th>Activity</th> <th>Highest</th> <th>Average</th> <th>Total</th> </tr></table>"
 
+       lastRoot = tree[0].Activity[0][0]
+
         for (i in tree) {
+            html = "";
+
             branch = tree[i];
-            html = "<table class='";
+            if(lastRoot != branch.Activity[0][0]){
+                html += "<div style='height:3px;'></div>";
+                lastRoot = branch.Activity[0][0];
+            }
+
+            // -- to show off depth difference: --
+            //branchLen = branch.Activity[0].length;
+            //html += "<table style='margin-left:" + (branchLen-1)*20 + "px;' class='";
+
+            html += "<table class='";
+
 
             if (branch.Highest >= perfectScore) {
                 html += "green'><tr>";
