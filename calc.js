@@ -4,13 +4,16 @@ let counter = 0;// to count number of loading iteration before interrupt
 //function that updates and writes content
 function update(boo) {
     if (locallyStored === null && boo) {
-        let json
         //getting json from chrome storage
         chrome.storage.sync.get("notes", ({
             notes
         }) => {
-            json = notes;
+            localStorage.setItem('note', notes);
         });
+
+        let json = localStorage.getItem("note");
+        localStorage.removeItem("note");
+        
         // verifying if chrome storage is not empty, if empty either page loaded without the extension installed or just not set because of tab change and so resetting it.
         if (json == "undefined" && counter <= 5){
             tryGet();
