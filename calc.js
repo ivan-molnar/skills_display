@@ -129,9 +129,9 @@ function getAllLeavesEmpty(){
     A4_2_C3= new Branch("A4-2-C3", "Mise en production", 875, A4_2);
 
     A5_1_C1= new Branch("A5-1-C1", "Corrective", 1000, A5_1);
-    A5_2_C2= new Branch("A5-2-C2", "Evolutive", 1000, A5_2);
-    A5_3_C3= new Branch("A5-3-C3", "Suivi", 1000, A5_3);
-
+    A5_2_C1= new Branch("A5-2-C1", "Evolutive", 1000, A5_2);
+    A5_3_C1= new Branch("A5-3-C2", "Suivi", 1000, A5_3);
+    
     A6_1_C1= new Branch("A6-1-C1", "Responsibilites", 1000, A6_1);
     A6_1_C2= new Branch("A6-1-C2", "Outils", 400, A6_1);
     A6_1_C3= new Branch("A6-1-C3", "Indicateurs", 400, A6_1);
