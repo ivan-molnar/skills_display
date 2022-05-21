@@ -2,6 +2,8 @@ let locallyStored = localStorage.getItem("written"); // to verify if notes exist
 let counter = 0;// to count number of loading iteration before interrupt
 let perfectScore = 95;
 
+let devMode = false;
+
 class Branch{
     constructor(activity, name, max, root){
         this.name = name;
@@ -232,7 +234,6 @@ function update(boo) {
             for(i in leaves){
                 if(leaves[i].activity.join('-').includes(note.Activity[0])){
                     leaves[i].notes.push(parseInt(note.Percentage));
-                    break;
                 }
             }
         }
@@ -310,6 +311,7 @@ chrome.tabs.query({
 
 //checking if you are on algosup's website and in the evaluations part
 function checkURL(){
+    if(devMode){return false}
     if (localStorage.getItem("url") != "https://skills.algosup.com/evaluations"){
         document.getElementById("outputBody").innerHTML += "website not recognized, please refresh once you are on skills.algosup.com/evaluations"
         return true;
