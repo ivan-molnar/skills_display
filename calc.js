@@ -53,10 +53,21 @@ function getAllLeavesEmpty(){
 
     A3_1= new Branch("A3-1", "Tests", 2000, A3);
     A3_2= new Branch("A3-2", "Code", 11500, A3);
+    A3_2_C2= new Branch("A3-2-C2", "Mise en oeuvre", 4500, A3_2);
     A3_3= new Branch("A3-3", "UI", 5000, A3);
     A3_4= new Branch("A3-4", "Securite", 2500, A3);
 
     A4_1= new Branch("A4-1", "Test", 5000, A4);
+    A4_2= new Branch("A4-2", "Mise en production", 2000, A4);
+
+    A5_1= new Branch("A5-1", "Corrective", 1000, A5);
+    A5_2= new Branch("A5-2", "Evolutive", 1000, A5);
+    A5_3= new Branch("A5-3", "Suivi", 1000, A5);
+
+    A6_1= new Branch("A6-1", "Pilotage", 1800, A6);
+    A6_2= new Branch("A6-2", "Veille", 800, A6);
+    A6_3= new Branch("A6-3", "Management", 4800, A6);
+    A6_4= new Branch("A6-4", "Communication", 1000, A6);
 
     A7_1= new Branch("A7-1", "Speaking", 6000, A7);
     //A7-2 is missing from the list of notes
@@ -67,7 +78,6 @@ function getAllLeavesEmpty(){
     A8_2= new Branch("A8-2", "Communication", 5720, A8);
     A8_3= new Branch("A8-3", "Resolution de problemes", 7150, A8);
 
-    A3_2_C2= new Branch("A3-2-C2", "Mise en oeuvre", 4500, A3_2);
 
     // leaves
     A1_1_C1= new Branch("A1-1-C1", "Besoins", 2250, A1_1);
@@ -114,16 +124,27 @@ function getAllLeavesEmpty(){
     A4_1_C4= new Branch("A4-1-C4", "Intrusion", 1000, A4_1);
     A4_1_C5= new Branch("A4-1-C5", "Jeux d'essais", 1000, A4_1);
 
-    A4_2= new Branch("A4-2", "Mise en production", 2000, A4);
+    A4_2_C1= new Branch("A4-2-C1", "Automatiser", 875, A4_2);
+    A4_2_C2= new Branch("A4-2-C2", "Rediger", 875, A4_2);
+    A4_2_C3= new Branch("A4-2-C3", "Mise en production", 875, A4_2);
 
-    A5_1= new Branch("A5-1", "Corrective", 1000, A5);
-    A5_2= new Branch("A5-2", "Evolutive", 1000, A5);
-    A5_3= new Branch("A5-3", "Suivi", 1000, A5);
+    A5_1_C1= new Branch("A5-1-C1", "Corrective", 1000, A5_1);
+    A5_2_C2= new Branch("A5-2-C2", "Evolutive", 1000, A5_2);
+    A5_3_C3= new Branch("A5-3-C3", "Suivi", 1000, A5_3);
 
-    A6_1= new Branch("A6-1", "Pilotage", 1800, A6);
-    A6_2= new Branch("A6-2", "Veille", 800, A6);
-    A6_3= new Branch("A6-3", "Management", 4800, A6);
-    A6_4= new Branch("A6-4", "Communication", 1000, A6);
+    A6_1_C1= new Branch("A6-1-C1", "Responsibilites", 1000, A6_1);
+    A6_1_C2= new Branch("A6-1-C2", "Outils", 400, A6_1);
+    A6_1_C3= new Branch("A6-1-C3", "Indicateurs", 400, A6_1);
+
+    A6_2_C1= new Branch("A6-2-C1", "Veille", 400, A6_2);
+    A6_2_C2= new Branch("A6-2-C2", "Opportunites", 400, A6_2);
+
+    A6_3_C1= new Branch("A6-3-C1", "Organiser", 1000, A6_3);
+    A6_3_C2= new Branch("A6-3-C2", "Collaboration", 1800, A6_3);
+    A6_3_C3= new Branch("A6-3-C3", "Prevenir", 1000, A6_3);
+    A6_3_C4= new Branch("A6-3-C4", "Productivite", 1000, A6_3);
+
+    A6_4_C1= new Branch("A6-4-C1", "Parties prenantes", 1000, A6_4);
 
     //notation changes from here on out for some reason
     A7_1_1= new Branch("A7-1-1", "Precision", 2000, A7_1);
@@ -137,26 +158,37 @@ function getAllLeavesEmpty(){
     A8_2_1= new Branch("A8-2-1", "Oral", 1430, A8_2);
 
     A8_3_1= new Branch("A8-3-1", "Reformuler", 1430, A8_3);
+    // A8-3-2 is missing
     A8_3_3= new Branch("A8-3-3", "Curiosite", 1430, A8_3);
 
-    return [A1_1_C1, A1_1_C2, A1_2_C1, 
-            A1_2_C2, 
+    return [A1_1_C1, A1_1_C2, 
+            A1_2_C1, A1_2_C2, 
             A1_3_C1, A1_3_C2, 
+
             A2_1_C1, A2_1_C2, 
             A2_2_C1, A2_2_C2, A2_2_C3, A2_2_C4, 
             A2_3_C1, A2_3_C2, A2_3_C3, 
             A2_4_C1, 
+
             A3_1_C1, A3_1_C2, 
             A3_2_C1, 
             A3_2_C2_1, A3_2_C2_2, A3_2_C2_3, A3_2_C2_4, 
             A3_2_C3, 
             A3_3_C1, A3_3_C2, 
             A3_4_C1,
+
             A4_1_C1, A4_1_C2, A4_1_C3, A4_1_C4, A4_1_C5, 
-            A4_2, 
-            A5_1, A5_2, A5_3, 
-            A6_1, A6_2, A6_3, A6_4, 
-            A7_1_1, A7_1_2, A7_3_1, 
+            A4_2_C1, A4_2_C1, A4_2_C1, 
+            A5_1_C1, A5_2_C1, A5_3_C1, 
+            
+            A6_1_C1, A6_1_C2, A6_1_C3, 
+            A6_2_C1, A6_2_C2, 
+            A6_3_C1, A6_3_C2, A6_3_C3, A6_3_C4, 
+            A6_4_C1, 
+
+            A7_1_1, A7_1_2, 
+            A7_3_1,
+
             A8_1_1, A8_1_2_1, 
             A8_2_1, 
             A8_3_1, A8_3_3
@@ -241,11 +273,11 @@ function update(boo) {
 
             html += "</tr></table>";
 
-            sum += leaf.total / 100 * leaf.max;
+            //sum += leaf.total / 100 * leaf.max;
         }
 
         
-        html += "<table></tr> <td class='end'>Total points: </td> <td class='end'>" + round(sum) + "</td> </tr></table>"
+        //html += "<table></tr> <td class='end'>Total points: </td> <td class='end'>" + round(sum) + "</td> </tr></table>"
 
         document.getElementById("outputBody").innerHTML = html;
 
