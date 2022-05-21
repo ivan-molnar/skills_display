@@ -57,6 +57,20 @@ td{
     font-weight: bolder;
 }
 
+.blue{
+    border: 3px solid blue;
+}
+.blue .left{
+    background-color: blue;
+    color: White;
+    font-weight: bolder;
+}
+.blue .right{
+    background-color: lightblue;
+    color: darkblue;
+    font-weight: bolder;
+}
+
 
 th{
     text-align: left;
