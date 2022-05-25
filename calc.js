@@ -32,7 +32,7 @@ class Branch{
     }
 }
 
-function getAllLeavesEmpty(){
+function getBranchesEmpty(setting){
     // branches
     A1= new Branch("A1", "Analyse", 11500, undefined);
     A2= new Branch("A2", "Conception", 9100, undefined);
@@ -59,8 +59,8 @@ function getAllLeavesEmpty(){
     A3_3= new Branch("A3-3", "UI", 5000, A3);
     A3_4= new Branch("A3-4", "Securite", 2500, A3);
 
-    A4_1= new Branch("A4-1", "Test", 5000, A4);
-    A4_2= new Branch("A4-2", "Mise en production", 2000, A4);
+    A4_1= new Branch("A4-1", "Test", 4375, A4);
+    A4_2= new Branch("A4-2", "Mise en production", 2625, A4);
 
     A5_1= new Branch("A5-1", "Corrective", 1000, A5);
     A5_2= new Branch("A5-2", "Evolutive", 1000, A5);
@@ -72,8 +72,9 @@ function getAllLeavesEmpty(){
     A6_4= new Branch("A6-4", "Communication", 1000, A6);
 
     A7_1= new Branch("A7-1", "Speaking", 6000, A7);
-    //A7-2 is missing from the list of notes
+    A7_2= new Branch("A7-2", "Listening", 4000, A7);
     A7_3= new Branch("A7-3", "Writing", 6000, A7);
+    A7_4= new Branch("A7-4", "Reading", 6000, A7);
 
     A8_1= new Branch("A8-1", "Positure", 7150, A8);
     A8_1_2= new Branch("A8-1-2", "Apprendre", 1430, A8_1);
@@ -120,11 +121,11 @@ function getAllLeavesEmpty(){
 
     A3_4_C1= new Branch("A3-4-C1", "Deployer", 2500, A3_4);
 
-    A4_1_C1= new Branch("A4-1-C1", "Concevoir", 1000, A4_1);
-    A4_1_C2= new Branch("A4-1-C2", "Mise en oeuvre", 1000, A4_1);
-    A4_1_C3= new Branch("A4-1-C3", "Conformite", 1000, A4_1);
-    A4_1_C4= new Branch("A4-1-C4", "Intrusion", 1000, A4_1);
-    A4_1_C5= new Branch("A4-1-C5", "Jeux d'essais", 1000, A4_1);
+    A4_1_C1= new Branch("A4-1-C1", "Concevoir", 875, A4_1);
+    A4_1_C2= new Branch("A4-1-C2", "Mise en oeuvre", 875, A4_1);
+    A4_1_C3= new Branch("A4-1-C3", "Conformite", 875, A4_1);
+    A4_1_C4= new Branch("A4-1-C4", "Intrusion", 875, A4_1);
+    A4_1_C5= new Branch("A4-1-C5", "Jeux d'essais", 875, A4_1);
 
     A4_2_C1= new Branch("A4-2-C1", "Automatiser", 875, A4_2);
     A4_2_C2= new Branch("A4-2-C2", "Rediger", 875, A4_2);
@@ -151,11 +152,23 @@ function getAllLeavesEmpty(){
     //notation changes from here on out for some reason
     A7_1_1= new Branch("A7-1-1", "Precision", 2000, A7_1);
     A7_1_2= new Branch("A7-1-2", "Vocabulaire", 2000, A7_1);
+    A7_1_3= new Branch("A7-1-3", "TED Talks", 2000, A7_1);
 
-    A7_3_1= new Branch("A7-3-1", "Writing", 2000, A7_3);
+    A7_2_1= new Branch("A7-2-1", "Media", 2000, A7_2);
+    A7_2_2= new Branch("A7-2-2", "Accents", 2000, A7_2);
+
+    A7_3_1= new Branch("A7-3-1", "Precision", 2000, A7_3);
+    A7_3_2= new Branch("A7-3-2", "Vocabulary", 2000, A7_3);
+    A7_3_3= new Branch("A7-3-3", "Structure", 2000, A7_3);
+
+    A7_4_1= new Branch("A7-4-1", "Complex", 2000, A7_4);
+    A7_4_2= new Branch("A7-4-2", "Vocabulary", 2000, A7_4);
 
     A8_1_1= new Branch("A8-1-1", "Precision", 1430, A8_1);
     A8_1_2_1= new Branch("A8-1-2-1", "Reading list", 300, A8_1_2);
+    A8_1_3= new Branch("A8-1-3", "Enterprendre", 1430, A8_1);
+    A8_1_4= new Branch("A8-1-4", "Se connaitre", 1430, A8_1);
+    A8_1_5= new Branch("A8-1-5", "Savoir-etre", 1430, A8_1);
 
     A8_2_1= new Branch("A8-2-1", "Oral", 1430, A8_2);
 
@@ -163,38 +176,104 @@ function getAllLeavesEmpty(){
     // A8-3-2 is missing
     A8_3_3= new Branch("A8-3-3", "Curiosite", 1430, A8_3);
 
-    return [A1_1_C1, A1_1_C2, 
-            A1_2_C1, A1_2_C2, 
-            A1_3_C1, A1_3_C2, 
+    switch(setting){
+        case "leaves":
+            return [A1_1_C1, A1_1_C2, 
+                    A1_2_C1, A1_2_C2, 
+                    A1_3_C1, A1_3_C2, 
+        
+                    A2_1_C1, A2_1_C2, 
+                    A2_2_C1, A2_2_C2, A2_2_C3, A2_2_C4, 
+                    A2_3_C1, A2_3_C2, A2_3_C3, 
+                    A2_4_C1, 
+        
+                    A3_1_C1, A3_1_C2, 
+                    A3_2_C1, 
+                    A3_2_C2_1, A3_2_C2_2, A3_2_C2_3, A3_2_C2_4, 
+                    A3_2_C3, 
+                    A3_3_C1, A3_3_C2, 
+                    A3_4_C1,
+        
+                    A4_1_C1, A4_1_C2, A4_1_C3, A4_1_C4, A4_1_C5, 
+                    A4_2_C1, A4_2_C1, A4_2_C1, 
+        
+                    A5_1_C1, A5_2_C1, A5_3_C1, 
+                    
+                    A6_1_C1, A6_1_C2, A6_1_C3, 
+                    A6_2_C1, A6_2_C2, 
+                    A6_3_C1, A6_3_C2, A6_3_C3, A6_3_C4, 
+                    A6_4_C1, 
+        
+                    A7_1_1, A7_1_2, A7_1_3,
+                    A7_2_1, A7_2_2,
+                    A7_3_1, A7_3_2, A7_3_3,
+                    A7_4_1, A7_4_2,
+        
+                    A8_1_1, A8_1_2_1, A8_1_3, A8_1_4, A8_1_5, 
+                    A8_2_1, 
+                    A8_3_1, A8_3_3
+                ]
+            case "full":
+                return [
+                    A1, A2, A3, A4, A5, A6, A7, A8, 
+                    A1_1, A1_2, A1_3, 
+                    A2_1, A2_2, A2_3, A2_4, 
+                    A3_1, A3_2, A3_2_C2, A3_3, A3_4, 
+                    A4_1, A4_2, 
+                    A5_1, A5_2, A5_3, 
+                    A6_1, A6_2, A6_3, A6_4, 
+                    A7_1, A7_2, A7_3, A7_4,
+                    A8_1, A8_1_2, A8_2, A8_3, 
+                    
+                    A1_1_C1, A1_1_C2, A1_2_C1, A1_2_C2, A1_3_C1, A1_3_C2, 
 
-            A2_1_C1, A2_1_C2, 
-            A2_2_C1, A2_2_C2, A2_2_C3, A2_2_C4, 
-            A2_3_C1, A2_3_C2, A2_3_C3, 
-            A2_4_C1, 
+                    A2_1_C1, A2_1_C2, A2_2_C1, A2_2_C2, A2_2_C3, A2_2_C4, 
+                    A2_3_C1, A2_3_C2, A2_3_C3, A2_4_C1, 
 
-            A3_1_C1, A3_1_C2, 
-            A3_2_C1, 
-            A3_2_C2_1, A3_2_C2_2, A3_2_C2_3, A3_2_C2_4, 
-            A3_2_C3, 
-            A3_3_C1, A3_3_C2, 
-            A3_4_C1,
+                    A3_1_C1, A3_1_C2, A3_2_C1, A3_2_C2_1, A3_2_C2_2, A3_2_C2_3, 
+                    A3_2_C2_4,  A3_2_C3, A3_3_C1, A3_3_C2, A3_4_C1, 
+                    
+                    A4_1_C1, A4_1_C2, A4_1_C3, A4_1_C4, A4_1_C5, 
+                    A4_2_C1, A4_2_C2, A4_2_C3, 
+                    
+                    A5_1_C1, A5_2_C1, A5_3_C1, 
+                    
+                    A6_1_C1, A6_1_C2, A6_1_C3, A6_2_C1, A6_2_C2, 
+                    A6_3_C1, A6_3_C2, A6_3_C3, A6_3_C4, A6_4_C1, 
+                    
+                    A7_1_1, A7_1_2, A7_1_3, A7_2_1, A7_2_2,
+                    A7_3_1, A7_3_2, A7_3_3, A7_4_1, A7_4_2,
+        
+                    A8_1_1, A8_1_2_1, A8_1_3, A8_1_4, A8_1_5, 
+                    A8_2_1, A8_3_1, A8_3_3
+                ]
+            default:
+                console.log("Error: getBranch setting not found !")
+                return 0;
+    }   
+}
 
-            A4_1_C1, A4_1_C2, A4_1_C3, A4_1_C4, A4_1_C5, 
-            A4_2_C1, A4_2_C1, A4_2_C1, 
-            A5_1_C1, A5_2_C1, A5_3_C1, 
-            
-            A6_1_C1, A6_1_C2, A6_1_C3, 
-            A6_2_C1, A6_2_C2, 
-            A6_3_C1, A6_3_C2, A6_3_C3, A6_3_C4, 
-            A6_4_C1, 
+function findMissing(){
+    let tree = getBranchesEmpty("full");
+    let leaves = getBranchesEmpty("leaves");
 
-            A7_1_1, A7_1_2, 
-            A7_3_1,
+    for(leaf of leaves){
+        leafAct = leaf.activity.join('')
+        for(i in tree){
+            branchAct = tree[i].activity.join('')
 
-            A8_1_1, A8_1_2_1, 
-            A8_2_1, 
-            A8_3_1, A8_3_3
-    ]
+            if(leafAct.includes(branchAct)){
+                tree[i].max -= leaf.max;
+                // if(tree[i].max == 0){
+                //     tree.splice(i, 1); 
+                // }
+            }
+        }
+    }
+
+    for(branch of tree){
+        console.log("Branch: " + branch.activity.join("-") + ", Missing: " + branch.max);
+    }
 }
 
 function round(num){ 
@@ -228,7 +307,7 @@ function update(boo) {
         //data preparation
         let notes = JSON.parse(json);
 
-        let leaves = getAllLeavesEmpty();
+        let leaves = getBranchesEmpty("leaves");
 
         for(note of notes){
             for(i in leaves){
@@ -247,7 +326,7 @@ function update(boo) {
 
         for (leaf of leaves) {
             leaf.calcNotes();
-            console.log(leaf);
+            //console.log(leaf);
 
             if(lastRoot != leaf.activity[0]){
                 html += "<div style='height:5px;'></div>";
