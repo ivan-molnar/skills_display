@@ -391,8 +391,9 @@ chrome.tabs.query({
 //checking if you are on algosup's website and in the evaluations part
 function checkURL(){
     if(devMode){return false}
-    if (localStorage.getItem("url") != "https://skills.algosup.com/evaluations"){
-        document.getElementById("outputBody").innerHTML += "website not recognized, please refresh once you are on skills.algosup.com/evaluations"
+    let url = localStorage.getItem("url")
+    if (url != "https://skills.algosup.com/evaluations"){
+        document.getElementById("outputBody").innerHTML += "your are on '" + url + "', please open it on <a target='_blank' rel='noopener noreferrer' href='https://skills.algosup.com/evaluations'>skills.algosup.com/evaluations</a>"
         return true;
     }else{
         return false;
