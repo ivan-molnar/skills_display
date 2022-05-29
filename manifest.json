@@ -6,7 +6,7 @@
     "permissions": ["storage", "activeTab", "scripting", "tabs"],
     "content_scripts": [{
         "all_frames": true,
-        "matches": ["https://skills.algosup.com/"],
+        "matches": ["https://skills.algosup.com/*"],
         "js": ["read.js"],
         "run_at": "document_end"
     }],
