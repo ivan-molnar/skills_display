@@ -5,6 +5,21 @@ function get() {
     Array.prototype.slice.call(document.getElementsByClassName("rz-cell-data")).forEach(element => {
         arr += element.innerHTML;
     });
+    if(arr == ""){
+        open();
+        setTimeout(() => {
+            open();
+        }, 1000);
+        setTimeout(() => {
+            open();
+        }, 2000);
+        setTimeout(() => {
+            open();
+        }, 3000);
+        Array.prototype.slice.call(document.getElementsByClassName("rz-treenode-label")).forEach(element => {
+            arr += element.innerHTML;
+        });
+    }
     raw = arr.split('                <!--!-->\n');
     counter = 0;
     output = [];
@@ -35,16 +50,33 @@ function get() {
         }
     }
     //saving data in chrome storage to communicate them to calc.js
-    let notes = JSON.stringify(output); 
+    let notes = JSON.stringify(output);
     chrome.storage.sync.set({
         "notes": notes
     });
 }
-setTimeout(() => {
-    get();
-}, 1000); // time to be sure that the content is loaded, blazor makes items appear even after the page is fully loaded
 
 //if you quit/refresh the website, emptying chrome's storage so that calc does not take old data
 window.addEventListener('beforeunload', async () => {
     chrome.storage.sync.remove("notes");
 })
+
+let knownel = [];
+function open() {
+    Array.prototype.slice.call(document.getElementsByClassName("rz-tree-toggler rzi rzi-caret-right")).forEach(element => {
+        let known = false;
+        knownel.forEach(el=>{
+            if(getDomPath(el) == getDomPath(element)){
+                known = true;
+            }
+        })
+        if(known == false){
+            element.click();
+            knownel.push();
+        }
+    });
+}
+
+setTimeout(() => {
+    get();
+}, 1000); // time to be sure that the content is loaded, blazor makes items appear even after the page is fully loaded

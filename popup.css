@@ -1,8 +1,29 @@
-body{
+body {
     width: 450px;
-    height: 900px;
+    height: fit-content;
+    background-color: beige;
 }
 
-#outputBody{
+#outputBody {
     overflow-x: scroll;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li{
+    min-width: 50%;
+}
+
+ul li button {
+    width: -webkit-fill-available;
+    background: #ccc;
+    text-align: center;
+}
+
+ul li button:hover {
+    background: #ddd;
 }

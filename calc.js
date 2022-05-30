@@ -399,8 +399,8 @@ chrome.tabs.query({
 function checkURL(){
     if(devMode){return false}
     let url = localStorage.getItem("url")
-    if (url != "https://skills.algosup.com/evaluations"){
-        document.getElementById("outputBody").innerHTML += "your are on '" + url + "', please open it on <a target='_blank' rel='noopener noreferrer' href='https://skills.algosup.com/evaluations'>skills.algosup.com/evaluations</a>"
+    if (url != "https://skills.algosup.com/evaluations" && url != "https://skills.algosup.com/activities"){
+        document.getElementById("outputBody").innerHTML += "your are on '" + url + "', please open it on <a target='_blank' rel='noopener noreferrer' href='https://skills.algosup.com/evaluations'>evaluations</a> or on on <a target='_blank' rel='noopener noreferrer' href='https://skills.algosup.com/activities'>activities</a>"
         return true;
     }else{
         return false;
