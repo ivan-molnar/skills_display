@@ -7,7 +7,6 @@ This project has been realised by Molnar Ivan and Louis De Lavenne.
 
 - This project is still in Beta and therefore is still prone to changes during developpement.
 - The point system which we base ourselves on is also still in developpement and is also prone to changes. 
-- On the previous note, at the moment of creation of this document the point system is still missing approximatively 27 000 points worth of competances from the English (A7) and Soft-Skills (A8) branches of the Activity-Tree. And therefore these activites also do not show up within the plug-in.
 
 - Because of the way points are currently calculated, the points themselves are only really useful as the coefficients used to calculate the difference between activities. However, as students need to achieve at least 50% in every activity, these points are highly meaningless to the students themselves. Therefore, in this project we sorely focus on working with the percentages of the notes accumulated.
 
@@ -42,3 +41,8 @@ In the list that appears you will see a list of the activites you have notes fro
 Red means your note on the activity is below 50%, yellow means you are above 50% and green means your highest note is 95% or above (and therefore not a problem anymore). Blue means there is no data available on the subject.
 
 ![skillz plugin](readme_pics/table.png)
+
+The description of the activites can be seen when hovering over the title of the activity
+
+![description](readme_pics/desc.png)
+
