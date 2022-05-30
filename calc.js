@@ -2,7 +2,7 @@ let locallyStored = localStorage.getItem("written"); // to verify if notes exist
 let counter = 0;// to count number of loading iteration before interrupt
 let perfectScore = 95;
 
-let devMode = false;
+let devMode = true;
 
 class Branch{
     constructor(activity, name, max, root){
@@ -171,10 +171,15 @@ function getBranchesEmpty(setting){
     A8_1_5= new Branch("A8-1-5", "Savoir-etre", 1430, A8_1);
 
     A8_2_1= new Branch("A8-2-1", "Oral", 1430, A8_2);
+    A8_2_2= new Branch("A8-2-2", "Ecrit", 1430, A8_2);
+    A8_2_3= new Branch("A8-2-3", "Differences culturells", 1430, A8_2);
+    A8_2_4= new Branch("A8-2-4", "E-reputation", 1430, A8_2);
 
     A8_3_1= new Branch("A8-3-1", "Reformuler", 1430, A8_3);
-    // A8-3-2 is missing
+    A8_3_2= new Branch("A8-3-2", "Decomposer", 1430, A8_3);
     A8_3_3= new Branch("A8-3-3", "Curiosite", 1430, A8_3);
+    A8_3_4= new Branch("A8-3-4", "Visualiser", 1430, A8_3);
+    A8_3_5= new Branch("A8-3-5", "Generaliser", 1430, A8_3);
 
     switch(setting){
         case "leaves":
@@ -210,8 +215,8 @@ function getBranchesEmpty(setting){
                     A7_4_1, A7_4_2,
         
                     A8_1_1, A8_1_2_1, A8_1_3, A8_1_4, A8_1_5, 
-                    A8_2_1, 
-                    A8_3_1, A8_3_3
+                    A8_2_1, A8_2_2, A8_2_3, A8_2_4, 
+                    A8_3_1, A8_3_2, A8_3_3, A8_3_4, A8_3_5
                 ]
             case "full":
                 return [
@@ -245,7 +250,8 @@ function getBranchesEmpty(setting){
                     A7_3_1, A7_3_2, A7_3_3, A7_4_1, A7_4_2,
         
                     A8_1_1, A8_1_2_1, A8_1_3, A8_1_4, A8_1_5, 
-                    A8_2_1, A8_3_1, A8_3_3
+                    A8_2_1, A8_2_2, A8_2_3, A8_2_4, 
+                    A8_3_1, A8_3_2, A8_3_3, A8_3_4, A8_3_5
                 ]
             default:
                 console.log("Error: getBranch setting not found !")
