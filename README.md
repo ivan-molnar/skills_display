@@ -29,20 +29,27 @@ Then, click on ``Load unpacked`` on the top-left and select the entire project f
 
 It is our objective to simplify this as much as possible. Constructive criticism and ideas are both welcome.
 
-To use the product you just simply have to go to the "Evaluations" tab on your ALGOSUP profile then open the plugin.
+To use the product you just simply have to go to the `Evaluations` or `Activities` tab on your ALGOSUP profile then open the plugin.
 
-![evaluation tab](readme_pics/eval_tab.png)
+![evaluations tab](readme_pics/eval_tab.png)
+
+![activities tab](readme_pics/act_tab.png)
 
 ![plugins](readme_pics/plugins.png)
 
 ![skillz plugin](readme_pics/skillz.png)
 
-In the list that appears you will see a list of the activites you have notes from, sorted by activity.
+In `Evaluations`, in the list that appears you will see a list of the activites you have notes from, sorted by activity.
 Red means your note on the activity is below 50%, yellow means you are above 50% and green means your highest note is 95% or above (and therefore not a problem anymore). Blue means there is no data available on the subject.
 
 ![skillz plugin](readme_pics/table.png)
 
-The description of the activites can be seen when hovering over the title of the activity
+In `Activities`, a skill tree will appear, it represents the 8 major skills and their branches, the most important points are those in the major categories, 50% in one of them means you have the necessary number of points in the said skill to finish the school. In red the branches under 50% and in green the ones above.
+
+![skillzT plugin](readme_pics/skill-tree.png)
+
+The description of the activites can be seen when hovering over the title of the activity in `Evaluations` and over a circle in `Activities`
 
 ![description](readme_pics/desc.png)
 
+![descriptionST](readme_pics/descST.png)
