@@ -305,7 +305,8 @@ function update() {
 
         let json = localStorage.getItem("note");
         // verifying if chrome storage is not empty, if empty either page loaded without the extension installed or just not set because of tab change and so resetting it.
-        if (json == "undefined" && counter <= 5 || json.length < 474 && counter <= 5) {
+        console.log(json.length);
+        if (json == "undefined" && counter <= 5 || json.length < 6705 && counter <= 5) {
             tryGet();
             document.getElementById("outputBody").innerHTML += "loading../"
             counter++;
@@ -318,8 +319,6 @@ function update() {
         notes = JSON.parse(json);
         let html = "";
         if (typeof notes[0].Percentage != 'undefined') {
-            document.getElementById("zooml").style.visibility = "hidden";
-            document.getElementById("zoomp").style.visibility = "hidden";
             let leaves = getBranchesEmpty("leaves");
 
             for (note of notes) {
@@ -369,8 +368,6 @@ function update() {
             }
             document.getElementById("outputBody").innerHTML = html;
         } else {
-            document.getElementById("zooml").style.visibility = "visible";
-            document.getElementById("zoomp").style.visibility = "visible";
             if (localStorage.getItem('zoom') != undefined && localStorage.getItem('zoom'))
                 Apply()
             else {
@@ -465,35 +462,6 @@ document.getElementById("clear").addEventListener("click", async () => {
     document.getElementById("outputBody").innerHTML = "";
 });
 
-
-
-document.getElementById("zooml").addEventListener("click", async () => {
-
-    if (!checkURL()) {
-        Zoom(true, 2)
-        let html = `
-        <div id="outer">
-        <div id="inner" style="width: 4000px; height: 4000px;">
-        ` + svg + late_svg + "</svg></div></div> ";
-
-        document.getElementById("outputBody").innerHTML = html;
-
-        CloseApply()
-    }
-});
-
-document.getElementById("zoomp").addEventListener("click", async () => {
-    if (!checkURL()) {
-        Zoom(false, 2);
-        document.getElementById("outputBody").innerHTML = `
-        <div id="outer">
-        <div id="inner" style="width: 4000px; height: 4000px;">
-        ` + svg + late_svg + "</svg></div></div> ";
-        CloseApply()
-    }
-});
-
-
 // The body of this function will be executed as a content script inside the
 // current page (algosup)
 function update_data() {
@@ -566,6 +534,7 @@ function LoopBranches(s, index, rep, rdeg) {
         points = notes[used_notes].Points;
     } catch (e) {
         console.log(e);
+        console.log(notes);
         ret = 0;
         used_notes = 0;
         return;
@@ -586,7 +555,7 @@ function LoopBranches(s, index, rep, rdeg) {
 
     if (txt[0].replaceAll('-', '') == fl) {
         late_svg +=
-            `<rect x="` + (s[4] + popup) + `"  y="` + (s[5] - 30) + `" width="`+(138 + txt[1].length * 2.5) + `" height="40px" visibility="hidden" fill="grey">
+            `<rect x="` + (s[4] + popup) + `"  y="` + (s[5] - 30) + `" width="` + (138 + txt[1].length * 2.5) + `" height="40px" visibility="hidden" fill="grey">
       <set attributeName="visibility" from="hidden" to="visible" begin="` + fl + `.mouseenter" end="` + fl + `.mouseout"/>
       </rect>
       <text id="thepopup" x="` + (s[4] + popup + 5) + `" y="` + (s[5] - 15) + `" font-size="10" fill="white" visibility="hidden">` + txt[0] + `
@@ -689,6 +658,23 @@ function CloseApply() {
         left: "50%",
         y: -100
     })
+
+    if (document.getElementById("inner") != undefined)
+        document.getElementById("inner").addEventListener("wheel", async function (e) {
+            if (!checkURL()) {
+                window.scrollTo(0, 0);
+                if (e.deltaY > 0) {
+                    Zoom(true, 1.2);
+                } else {
+                    Zoom(false, 1.2);
+                }
+                document.getElementById("outputBody").innerHTML = `
+        <div id="outer">
+        <div id="inner" style="width: 4000px; height: 4000px;">
+        ` + svg + late_svg + "</svg></div></div> ";
+                CloseApply()
+            }
+        });
 }
 
 let max_zoom = 1;

@@ -10,7 +10,6 @@ body {
 
 ul {
     display: flex;
-    flex-wrap: wrap;
     list-style: none;
     padding-left: 0;
 }
@@ -33,6 +32,7 @@ ul li button:hover {
 #outer {
     resize: both;
     border-radius: 12px;
+    width: 450px;
     height: 500px;
     overflow: hidden;
     position: relative;
