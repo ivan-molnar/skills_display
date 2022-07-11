@@ -5,21 +5,6 @@ function get() {
     Array.prototype.slice.call(document.getElementsByClassName("rz-cell-data")).forEach(element => {
         arr += element.innerHTML;
     });
-    if(arr == ""){
-        open();
-        setTimeout(() => {
-            open();
-        }, 1000);
-        setTimeout(() => {
-            open();
-        }, 2000);
-        setTimeout(() => {
-            open();
-        }, 3000);
-        Array.prototype.slice.call(document.getElementsByClassName("rz-treenode-label")).forEach(element => {
-            arr += element.innerHTML;
-        });
-    }
     raw = arr.split('                <!--!-->\n');
     counter = 0;
     output = [];
@@ -49,11 +34,54 @@ function get() {
                 }
         }
     }
-    //saving data in chrome storage to communicate them to calc.js
     let notes = JSON.stringify(output);
+    //saving data in chrome storage to communicate them to calc.js
+    if (arr == "") {
+        open();
+        setTimeout(() => {
+            open();
+        }, 1000);
+        setTimeout(() => {
+            open();
+        }, 2000);
+        setTimeout(() => {
+            open();
+        }, 3000);
+        Array.prototype.slice.call(document.getElementsByClassName("rz-treenode-label")).forEach(element => {
+            arr += element.innerHTML;
+        });
+
+        arr = arr.replaceAll('&nbsp;', '');
+        arr = arr.replaceAll('\n', '');
+        raw = arr.split(')');
+        raw = raw.map(i => i.split('('));
+        raw.pop();
+        raw = raw.map(i => [i[0].split(' '), i[1].split(' / ')]);
+        raw = raw.map(i => {
+            if (i[0].length > 3) {
+                return [
+                    [i[0][0], i[0][1] + ' ' + i[0][2] + ' ' + i[0][3]], i[1]
+                ]
+            } else {
+                return [
+                    [i[0][0], i[0][1]], i[1]
+                ]
+            }
+        });
+        let output = ['['];
+        for (let i = 0; i < raw.length; i++) {
+            output.push('{"Activity":["' + raw[i][0][0] + '","' + raw[i][0][1] + '"],');
+            output.push('"Points":["' + raw[i][1][0] + '","' + raw[i][1][1] + '"]},');
+        }
+        output[output.length - 1] = output[output.length - 1].substring(0, output[output.length - 1].length - 1)
+        output.push(']');
+        notes = (output.join(''));
+    }
+    console.log(notes);
     chrome.storage.sync.set({
         "notes": notes
     });
+    arr ="";
 }
 
 //if you quit/refresh the website, emptying chrome's storage so that calc does not take old data
@@ -62,15 +90,16 @@ window.addEventListener('beforeunload', async () => {
 })
 
 let knownel = [];
+
 function open() {
     Array.prototype.slice.call(document.getElementsByClassName("rz-tree-toggler rzi rzi-caret-right")).forEach(element => {
         let known = false;
-        knownel.forEach(el=>{
-            if(getDomPath(el) == getDomPath(element)){
+        knownel.forEach(el => {
+            if (getDomPath(el) == getDomPath(element)) {
                 known = true;
             }
         })
-        if(known == false){
+        if (known == false) {
             element.click();
             knownel.push();
         }

@@ -10,6 +10,7 @@ body {
 
 ul {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
     padding-left: 0;
 }
@@ -26,4 +27,22 @@ ul li button {
 
 ul li button:hover {
     background: #ddd;
+}
+
+
+#outer {
+    resize: both;
+    border-radius: 12px;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+
+.inner {
+    position: absolute;
+    background: radial-gradient(#ddd, #222);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(https://i.imgur.com/oxVKKsi.jpg);
+    background-size: cover;
 }
