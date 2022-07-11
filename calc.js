@@ -586,7 +586,7 @@ function LoopBranches(s, index, rep, rdeg) {
 
     if (txt[0].replaceAll('-', '') == fl) {
         late_svg +=
-            `<rect x="` + (s[4] + popup) + `"  y="` + (s[5] - 30) + `" width="138px" height="40px" visibility="hidden" fill="grey">
+            `<rect x="` + (s[4] + popup) + `"  y="` + (s[5] - 30) + `" width="`+(138 + txt[1].length * 2.5) + `" height="40px" visibility="hidden" fill="grey">
       <set attributeName="visibility" from="hidden" to="visible" begin="` + fl + `.mouseenter" end="` + fl + `.mouseout"/>
       </rect>
       <text id="thepopup" x="` + (s[4] + popup + 5) + `" y="` + (s[5] - 15) + `" font-size="10" fill="white" visibility="hidden">` + txt[0] + `
@@ -595,7 +595,7 @@ function LoopBranches(s, index, rep, rdeg) {
       <text id="thepopup" x="` + (s[4] + popup + 5) + `" y="` + s[5] + `" font-size="10" fill="white" visibility="hidden">` + points[0] + "/" + points[1] + `
       <set attributeName="visibility" from="hidden" to="visible" begin="` + fl + `.mouseenter" end="` + fl + `.mouseout"/>
       </text>
-      <text id="thepopup" x="` + (s[4] + popup + 50 + (22 - txt[1].length) * 2.5) + `" y="` + (s[5] - 15) + `" font-size="10" fill="white" visibility="hidden">` + txt[1] + `
+      <text id="thepopup" x="` + (s[4] + popup + 50 + (26 - txt[1].length) * 2.5) + `" y="` + (s[5] - 15) + `" font-size="10" fill="white" visibility="hidden">` + txt[1] + `
       <set attributeName="visibility" from="hidden" to="visible" begin="` + fl + `.mouseenter" end="` + fl + `.mouseout"/>
       </text>
       `;
