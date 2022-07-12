@@ -302,10 +302,9 @@ function update() {
         }) => {
             localStorage.setItem('note', notes);
         });
-
+        chrome.storage.sync.remove("notes");
         let json = localStorage.getItem("note");
         // verifying if chrome storage is not empty, if empty either page loaded without the extension installed or just not set because of tab change and so resetting it.
-        console.log(json.length);
         if (json == "undefined" && counter <= 5 || json.length < 6705 && counter <= 5) {
             tryGet();
             document.getElementById("outputBody").innerHTML += "loading../"
@@ -316,6 +315,7 @@ function update() {
             counter = 0;
         }
         //data preparation
+        console.log(json);
         notes = JSON.parse(json);
         let html = "";
         if (typeof notes[0].Percentage != 'undefined') {
@@ -388,7 +388,9 @@ function update() {
 
 
         //saving html so that if popup closed and reopened, no data scraping waiting time
-        localStorage.setItem('written', html);
+        chrome.storage.sync.set({
+            "written": html
+        });
     } else {
         document.getElementById("outputBody").innerHTML = locallyStored;
         if (localStorage.getItem("note") != undefined) {
@@ -425,6 +427,13 @@ function checkURL() {
         document.getElementById("outputBody").innerHTML += "your are on '" + url + "', please open it on <a target='_blank' rel='noopener noreferrer' href='https://skills.algosup.com/evaluations'>evaluations</a> or on on <a target='_blank' rel='noopener noreferrer' href='https://skills.algosup.com/activities'>activities</a>"
         return true;
     } else {
+        console.log(url ,localStorage.getItem("url2"));
+        if (localStorage.getItem("url2") != undefined && url != localStorage.getItem("url2")){
+        chrome.storage.sync.remove("notes");
+        localStorage.removeItem("written");
+            locallyStored = null;
+        }
+        localStorage.setItem('url2', url);
         return false;
     }
 }
@@ -664,9 +673,9 @@ function CloseApply() {
             if (!checkURL()) {
                 window.scrollTo(0, 0);
                 if (e.deltaY > 0) {
-                    Zoom(true, 1.2);
+                    Zoom(true, 1.1);
                 } else {
-                    Zoom(false, 1.2);
+                    Zoom(false, 1.1);
                 }
                 document.getElementById("outputBody").innerHTML = `
         <div id="outer">
