@@ -427,10 +427,10 @@ function checkURL() {
         document.getElementById("outputBody").innerHTML += "your are on '" + url + "', please open it on <a target='_blank' rel='noopener noreferrer' href='https://skills.algosup.com/evaluations'>evaluations</a> or on on <a target='_blank' rel='noopener noreferrer' href='https://skills.algosup.com/activities'>activities</a>"
         return true;
     } else {
-        console.log(url ,localStorage.getItem("url2"));
-        if (localStorage.getItem("url2") != undefined && url != localStorage.getItem("url2")){
-        chrome.storage.sync.remove("notes");
-        localStorage.removeItem("written");
+        console.log(url, localStorage.getItem("url2"));
+        if (localStorage.getItem("url2") != undefined && url != localStorage.getItem("url2")) {
+            chrome.storage.sync.remove("notes");
+            localStorage.removeItem("written");
             locallyStored = null;
         }
         localStorage.setItem('url2', url);
@@ -562,9 +562,8 @@ function LoopBranches(s, index, rep, rdeg) {
       <circle id="` + fl + `" cx="` + s[4] + `" cy="` + s[5] + `" r="` + r[index] + `" fill="rgb(50, 50, 50, .4)" />
     `;
 
-    if (txt[0].replaceAll('-', '') == fl) {
-        late_svg +=
-            `<rect x="` + (s[4] + popup) + `"  y="` + (s[5] - 30) + `" width="` + (138 + txt[1].length * 2.5) + `" height="40px" visibility="hidden" fill="grey">
+    late_svg +=
+        `<rect x="` + (s[4] + popup) + `"  y="` + (s[5] - 30) + `" width="` + (138 + txt[1].length * 2.5) + `" height="40px" visibility="hidden" fill="grey">
       <set attributeName="visibility" from="hidden" to="visible" begin="` + fl + `.mouseenter" end="` + fl + `.mouseout"/>
       </rect>
       <text id="thepopup" x="` + (s[4] + popup + 5) + `" y="` + (s[5] - 15) + `" font-size="10" fill="white" visibility="hidden">` + txt[0] + `
@@ -577,8 +576,8 @@ function LoopBranches(s, index, rep, rdeg) {
       <set attributeName="visibility" from="hidden" to="visible" begin="` + fl + `.mouseenter" end="` + fl + `.mouseout"/>
       </text>
       `;
-        used_notes++;
-    }
+    used_notes++;
+
     used[index]++;
     if (number_circles.length > index + 1) {
 
@@ -619,13 +618,11 @@ function LoopBranches(s, index, rep, rdeg) {
 }
 
 function Apply() {
-    for (let i = 0; i < number_circles[0]; i++) {
-        svg +=
-            `<svg width="` + svg_size + `" height="` + svg_size + `" style="background-color: rgb(12, 12, 12);">
+    svg +=
+        `<svg width="` + svg_size + `" height="` + svg_size + `" style="background-color: rgb(12, 12, 12);">
       <text fill="#ffffff" font-size="` + thicknesses[0] + `" font-family="cursive" x="` + (size - thicknesses[3]) + `" y="` + size + `">` + labels[0] + `</text>;
-      <circle id="` + labels[0] + `" cx="` + size + `" cy="` + size + `" r="` + r[i] + `" fill="rgb(50, 50, 50, .4)" />
+      <circle id="` + labels[0] + `" cx="` + size + `" cy="` + size + `" r="` + r[0] + `" fill="rgb(50, 50, 50, .4)" />
       `
-    }
     used[0]++;
     if (number_circles.length > 1) {
         let deg = 360 / number_circles[1] * (Math.PI / 180);
